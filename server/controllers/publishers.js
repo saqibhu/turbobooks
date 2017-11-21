@@ -9,9 +9,20 @@ if (process.env.NODE_ENV === 'production') {
   apiOptions.server = "https://getting-mean-loc8r.herokuapp.com";
 }
 
-var sendJsonResponse = function(res, status, content) {
-    res.status(status);
-    res.json(content);
+let response = {
+  status: 0,
+  data: [],
+  message: null
+};
+
+let sendJsonResponse = function(res, status, content, message) {
+    //res.status(status);
+    //res.json(content);
+    response.data = content;
+    response.status = status;
+    response.message = message;
+
+    res.json(response);
 };
 
 module.exports.publishersCreate = function (req, res) { 
@@ -67,9 +78,12 @@ module.exports.publishersReadOne = function (req, res) {
 
 module.exports.publishersList = function(req, res) {
   publishers.find()
-  //.select('name')
   .exec(function(err, publishersReturned){
-      sendJsonResponse(res, 200, publishersReturned);
+    if (err) {
+      sendJsonResponse(res, 404, err, 'Turbobooks API - An error occurred in publishersList');
+    } else {
+      sendJsonResponse(res, 200, publishersReturned, null);
+    }
   });
 };
 

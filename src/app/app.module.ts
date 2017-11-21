@@ -4,7 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
+
+//may need to pop this into a component then bring that in here
+import { PublishersService } from './services/publishers.service'
+
 import { AppComponent } from './app.component';
+
+
 
 @NgModule({
   declarations: [
@@ -16,7 +22,7 @@ import { AppComponent } from './app.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PublishersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
