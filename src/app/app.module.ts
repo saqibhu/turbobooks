@@ -9,12 +9,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { PublishersService } from './services/publishers.service'
 
 import { AppComponent } from './app.component';
-
+import { PublishersComponent } from './components/publishers/publishers.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PublishersComponent,
+    HomeComponent,
+    PublishersComponent
   ],
   imports: [
     BrowserModule,

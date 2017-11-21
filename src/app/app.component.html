@@ -1,5 +1,19 @@
-<h1>Our MongoDB is Working!</h1>
+<!--<h1>Our MongoDB is Working!</h1>
 
 <ul>
   <li *ngFor='let publisher of publishers'>{{ publisher.name }}</li>
-</ul>
+</ul>-->
+<nav class = 'navbar navbar-inverse'>
+  <div class = 'container-fluid'>
+    <div class = 'navbar-header'>
+      <a class = 'navbar-brand' href='#'>TurboBooks</a>
+    </div>
+    <ul class = 'nav navbar-nav'>
+      <li><a routerLink = '/home' routerLinkActive = 'active'>Home</a></li>
+      <li><a routerLink = '/publishers' routerLinkActive = 'active'>Publishers</a></li>
+    </ul>
+  </div>
+</nav>
+<div class = 'container'>
+  <router-outlet></router-outlet>
+</div>

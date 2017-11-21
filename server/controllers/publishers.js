@@ -59,23 +59,6 @@ module.exports.publishersReadOne = function (req, res) {
     }
  };
 
-/*module.exports.publishersList = function(req, res) {
-  var publishersArray = [];
-  publishers.find(function(doc) {
-    publishersArray.push({
-      name: doc.obj.name,
-      address: doc.obj.address,
-      genre: doc.obj.genre,
-      _id: doc.obj._id
-    });
-  });
-  if (err) {
-    sendJsonResponse(res, 404, err);
-  } else {
-    sendJsonResponse(res, 200, publishersArray);
-  };
-};*/
-
 module.exports.publishersList = function(req, res) {
   publishers.find()
   .exec(function(err, publishersReturned){
