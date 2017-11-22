@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PublishersService } from '../../services/publishers.service';
 
 @Component({
   selector: 'app-publishers',
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publishers.component.css']
 })
 export class PublishersComponent implements OnInit {
+  // Define a users property to hold our user data
+  publishers: Array<any>;
 
-  constructor() { }
+  constructor(private _dataService: PublishersService) { 
+    // Access the Data Service's getUsers() method we defined
+    this._dataService.getPublishers()
+    .subscribe(res => this.publishers = res);
+  }
 
   ngOnInit() {
   }

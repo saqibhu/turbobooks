@@ -1,3 +1,29 @@
-<p>
-  publishers works!
-</p>
+<div>
+  <h1>Add publisher</h1>
+  <div class = 'form-group'>
+    <input class = 'form-control input-lg' placeholder = 'Add publisher' autofocus = '#publisherText' />
+    <br />
+    <button class = 'btn btn-primary btn-block'>Create</button>
+  </div>
+</div>
+
+<div>
+  <div class = 'alert alert-info text-centre' [hidden] = 'publishers.length > 0'>
+    <h3>No publishers</h3>
+  </div>
+
+  <div *ngFor = 'let publisher of publishers'>
+   <div class = 'col-md-1'>
+    <input type = 'checkbox' />
+   </div>
+
+   <div class = 'col-md-7'>
+    {{ publisher.name }}
+   </div>
+
+   <div class = 'col-md-4 btns'>
+    <input type = 'button' class = 'btn btn-danger pull-right' value = 'Delete'>
+    <input type = 'button' class = 'btn btn-default pull-right' value = 'Edit'>
+   </div>
+  </div>
+</div>

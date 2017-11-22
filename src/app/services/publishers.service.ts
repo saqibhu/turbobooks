@@ -10,7 +10,6 @@ export class PublishersService {
   constructor(private _http: Http) { }
 
   getPublishers() { 
-    console.log('in data.service');
     return this._http.get('/api/publishers')
       .map(result => this.result = result.json().data);
   }
