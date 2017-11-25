@@ -1,9 +1,9 @@
 <div>
   <h1>Add publisher</h1>
   <div class = 'form-group'>
-    <input class = 'form-control input-lg' placeholder = 'Add publisher' autofocus = '#publisherText' />
+    <input class = 'form-control input-lg' placeholder = 'Add publisher' autofocus #publisherText />
     <br />
-    <button class = 'btn btn-primary btn-block'>Create</button>
+    <button (click)="addPublisher($event, publisherText)" class = 'btn btn-primary btn-block'>Create</button>
   </div>
 </div>
 

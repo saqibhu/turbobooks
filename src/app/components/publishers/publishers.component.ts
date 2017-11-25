@@ -11,12 +11,27 @@ export class PublishersComponent implements OnInit {
   publishers: Array<any>;
 
   constructor(private _dataService: PublishersService) { 
+  }
+
+  ngOnInit() {
     // Access the Data Service's getUsers() method we defined
     this._dataService.getPublishers()
     .subscribe(res => this.publishers = res);
   }
 
-  ngOnInit() {
+  addPublisher($publisher, publisherText){
+    if($publisher.which === 1) {
+      var result;
+      var newPublisher = {
+        name: publisherText.value
+      };
+
+      result = this._dataService.savePublishers(newPublisher);
+      result.subscribe(x=> {
+        this.publishers.push(newPublisher)
+        publisherText.value='';
+      })
+    }
   }
 
 }
