@@ -56,4 +56,19 @@ export class PublishersComponent implements OnInit {
     }
   }
 
+  deletePublisher(publisher) {
+    var publishers = this.publishers;
+    this._dataService.deletePublisher(publisher._id)
+    .subscribe(data => {
+      if(data.n==1){
+        for(var i=0; i<publishers.length; i++){
+          if(publishers[i].name == publisher.name){
+            publishers.splice(i,1);
+          }
+        }
+      }
+      //this._dataService.getPublishers()
+      //.subscribe(res => this.publishers = res);
+    })
+  }
 }

@@ -23,7 +23,7 @@
    </div>
 
    <div class = 'col-md-4 btns'>
-    <input type = 'button' class = 'btn btn-danger pull-right' value = 'Delete'>
+    <input type = 'button' (click)='deletePublisher(publisher)' class = 'btn btn-danger pull-right' value = 'Delete'>
     <input type = 'button' (click)='setEditState(publisher, true)' class = 'btn btn-default pull-right' value = 'Edit'>
    </div>
   </div>

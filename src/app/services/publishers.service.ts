@@ -26,8 +26,16 @@ export class PublishersService {
     let headers = new Headers({'Content-Type':'application/json'});
     let options = new RequestOptions({headers:headers})
 
-    return this._http.put('/api/publishers/'+ publisher._id, JSON.stringify(publisher), options)
+    return this._http.put('/api/publishers/' + publisher._id, JSON.stringify(publisher), options)
     .map(result => this.result = result.json().data);
+  }
+
+  deletePublisher(id) {
+    let headers = new Headers({'Content-Type':'application/json'});
+    let options = new RequestOptions({headers:headers})
+
+    return this._http.delete('/api/publishers/' + id, options)
+    .map(result => this.result = result.json().data)
   }
 
 }
