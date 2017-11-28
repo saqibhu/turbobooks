@@ -14,11 +14,19 @@ export class PublishersService {
       .map(result => this.result = result.json().data);
   }
 
-  savePublishers(publisher) {
+  savePublisher(publisher) {
     let headers = new Headers({'Content-Type':'application/json'});
     let options = new RequestOptions({headers:headers})
 
     return this._http.post('/api/publishers', JSON.stringify(publisher), options)
+    .map(result => this.result = result.json().data);
+  }
+
+  updatePublisher(publisher) {
+    let headers = new Headers({'Content-Type':'application/json'});
+    let options = new RequestOptions({headers:headers})
+
+    return this._http.put('/api/publishers/'+ publisher._id, JSON.stringify(publisher), options)
     .map(result => this.result = result.json().data);
   }
 

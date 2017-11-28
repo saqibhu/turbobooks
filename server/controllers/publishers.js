@@ -77,20 +77,16 @@ module.exports.publishersUpdateOne = function (req, res) {
   }
   publishers
   .findById(req.params.publisherid)
-  //.select('-authors')
   .exec(
     function(err, publisher) {
       if (!publisher) {
-        console.log('No publisher ')
         sendJsonResponse(res, 404, {"message": "publisherid not found"});
         return;
       } else if (err) {
-        console.log('Error is ' + err)
         sendJsonResponse(res, 400, err);
         return;
       }
       publisher.name = req.body.name;
-      //publisher.address = req.body.address;
       publisher.save(function(err, publisher) {
         if (err) {
           sendJsonResponse(res, 404, err);

@@ -8,22 +8,23 @@
 </div>
 
 <div>
-  <div class = 'alert alert-info text-centre' [hidden] = 'publishers.length > 0'>
+  <!--<div class = 'alert alert-info text-centre' [hidden] = 'publishers.length > 0'>
     <h3>No publishers</h3>
-  </div>
+  </div>-->
 
   <div *ngFor = 'let publisher of publishers'>
    <div class = 'col-md-1'>
-    <input type = 'checkbox' />
+     <input type = 'checkbox'>
    </div>
-
    <div class = 'col-md-7'>
-    {{ publisher.name }}
+    <span [class.hidden]='publisher.isEditMode'>{{ publisher.name }}</span>
+    <input [class.hidden]='!publisher.isEditMode' type='text' [value]='publisher.name' (keypress)='updatePublisher($event, publisher)'>
+    <input [class.hidden]='!publisher.isEditMode' type='button' value='cancel' (click)='setEditState(publisher, false)'>
    </div>
 
    <div class = 'col-md-4 btns'>
     <input type = 'button' class = 'btn btn-danger pull-right' value = 'Delete'>
-    <input type = 'button' class = 'btn btn-default pull-right' value = 'Edit'>
+    <input type = 'button' (click)='setEditState(publisher, true)' class = 'btn btn-default pull-right' value = 'Edit'>
    </div>
   </div>
 </div>
