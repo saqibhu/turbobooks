@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -11,7 +11,8 @@ export class PublishersService {
 
   getPublishers() { 
     return this._http.get('/api/publishers')
-      .map(result => this.result = result.json().data);
+      //.map(result => this.result = result.json().data);
+      .map((response:Response) => response.json().data);
   }
 
   savePublisher(publisher) {
@@ -35,7 +36,8 @@ export class PublishersService {
     let options = new RequestOptions({headers:headers})
 
     return this._http.delete('/api/publishers/' + id, options)
-    .map(result => this.result = result.json().data)
+    //.map(result => this.result = result.json().data)
+    .map((response:Response) => response.json().data);
   }
 
 }

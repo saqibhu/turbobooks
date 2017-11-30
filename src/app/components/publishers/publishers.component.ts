@@ -31,9 +31,16 @@ export class PublishersComponent implements OnInit {
       result = this._dataService.savePublisher(newPublisher);
       result.subscribe( x=> {
         this.publishers.push(newPublisher)
+
+        //does this need to be here
+        this._dataService.getPublishers()
+        .subscribe(res => this.publishers = res);
+        //the above, does it ned to be here
+
         publisherText.value='';
       })
     }
+
   }
 
   updatePublisher($event, publisher) {
@@ -67,8 +74,10 @@ export class PublishersComponent implements OnInit {
           }
         }
       }
-      //this._dataService.getPublishers()
-      //.subscribe(res => this.publishers = res);
     })
+
+    //Need to do a reload - is the UI being blocked?
+    this._dataService.getPublishers()
+    .subscribe(res => this.publishers = res);
   }
 }
